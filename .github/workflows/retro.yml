@@ -87,7 +87,7 @@ jobs:
         uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
 
       - name: "Upload Test Results"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.PACKAGE_NAME }}_pytest
           path: tests/junit/test-results.xml
