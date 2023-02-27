@@ -46,12 +46,12 @@ jobs:
           wheelhouse: true
 
       - name: "Prepare Testing Environment"
-        uses: pyansys/pydpf-actions/prepare_tests@v2.2
+        uses: pyansys/pydpf-actions/prepare_tests@v2.3
         with:
           DEBUG: true
 
       - name: "Test Docstrings"
-        uses: pyansys/pydpf-actions/test_docstrings@v2.2
+        uses: pyansys/pydpf-actions/test_docstrings@v2.3
         with:
           MODULE: ${{env.MODULE}}
           PACKAGE_NAME: ${{env.PACKAGE_NAME}}
@@ -85,7 +85,7 @@ jobs:
           pytest $DEBUG --cov=ansys.dpf.${{env.MODULE}} --cov-report=xml --cov-report=html --log-level=ERROR --junitxml=junit/test-results.xml --reruns 2 .
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: "Test API 2"
         shell: bash
@@ -94,7 +94,7 @@ jobs:
           pytest $DEBUG --cov=ansys.dpf.core --cov-report=xml --cov-report=html --cov-append --log-level=ERROR --junitxml=../tests/junit/test-results2.xml --reruns 2 .
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: "Test API 3"
         shell: bash
@@ -103,7 +103,7 @@ jobs:
           pytest $DEBUG --cov=ansys.dpf.core --cov-report=xml --cov-report=html --cov-append --log-level=ERROR --junitxml=../tests/junit/test-results3.xml --reruns 3 .
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: "Upload Test Results"
         uses: actions/upload-artifact@v2
@@ -172,7 +172,7 @@ jobs:
           pip install -r requirements/requirements_docs.txt
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: Build Documentation
         shell: cmd
@@ -182,7 +182,7 @@ jobs:
         timeout-minutes: 20
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: Publish Documentation artifact
         uses: actions/upload-artifact@v3
@@ -273,7 +273,7 @@ jobs:
           python run_examples.py
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: "Uninstall gatebin"
         shell: bash
@@ -289,7 +289,7 @@ jobs:
           DPF_SERVER_TYPE: INPROCESS
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
 
       - name: "Check sanity without gatebin GRPC"
@@ -301,7 +301,7 @@ jobs:
           DPF_SERVER_TYPE: GRPC
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
       - name: "Check sanity without gatebin LEGACYGRPC"
         shell: cmd
@@ -312,6 +312,6 @@ jobs:
           DPF_SERVER_TYPE: LEGACYGRPC
 
       - name: "Kill all servers"
-        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.2
+        uses: pyansys/pydpf-actions/kill-dpf-servers@v2.3
 
 
